@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Terms of Service — TikTok Greenscreen Editor</title>
+<style>
+  :root {
+    --paper: #f5f5f1;
+    --ink: #1b1d19;
+    --ink-soft: #53564e;
+    --ink-faint: #83857b;
+    --rule: #d8d9d2;
+    --accent: #2f4f3e;
+    --accent-soft: #e4ece6;
+    --link: #2f4f3e;
+    --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+    --font-body: "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14150f; --ink: #ece9e2; --ink-soft: #a8aa9e; --ink-faint: #6f7166;
+      --rule: #2c2f26; --accent: #8fcbaa; --accent-soft: #1e2b22; --link: #8fcbaa;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body { font-family: var(--font-body); font-size: 17px; line-height: 1.65; }
+  a { color: var(--link); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+  header.masthead {
+    padding: 28px 0 14px; margin-bottom: 8px; border-bottom: 1px solid var(--rule);
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 20px;
+  }
+  .eyebrow { font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); }
+  nav.switch { display: flex; gap: 4px; font-family: var(--font-ui); font-size: 13.5px; }
+  nav.switch a { text-decoration: none; color: var(--ink-soft); padding: 5px 12px; border-radius: 999px; border: 1px solid var(--rule); }
+  nav.switch a[aria-current="page"] { color: var(--ink); border-color: var(--accent); background: var(--accent-soft); }
+  nav.switch a:hover { color: var(--ink); border-color: var(--ink-faint); }
+  main { padding-top: 36px; }
+  h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 1.6rem + 1.6vw, 2.6rem); letter-spacing: -0.01em; margin: 0 0 4px; text-wrap: balance; }
+  p.meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-faint); letter-spacing: 0.02em; margin: 0 0 36px; }
+  ol.clauses { list-style: none; margin: 0; padding: 0; counter-reset: clause; }
+  ol.clauses > li { counter-increment: clause; display: grid; grid-template-columns: 2.1rem 1fr; gap: 4px 14px; padding: 20px 0; border-top: 1px solid var(--rule); }
+  ol.clauses > li:first-child { border-top: none; padding-top: 0; }
+  ol.clauses > li::before { content: counter(clause) "."; font-family: var(--font-display); font-variant-numeric: tabular-nums; font-size: 1.05rem; color: var(--accent); padding-top: 0.05em; }
+  ol.clauses h2 { grid-column: 2; font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; margin: 0 0 6px; }
+  ol.clauses p { grid-column: 2; margin: 0; color: var(--ink-soft); max-width: 62ch; }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 13px; color: var(--ink-faint); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
+  footer a { color: var(--ink-soft); }
+  @media (max-width: 520px) { ol.clauses > li { grid-template-columns: 1.6rem 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <span class="eyebrow">TikTok Greenscreen Editor</span>
+    <nav class="switch">
+      <a href="terms.html" aria-current="page">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Terms of Service</h1>
+    <p class="meta">Effective 29 July 2026</p>
+    <ol class="clauses">
+      <li>
+        <h2>About this application</h2>
+        <p>TikTok Greenscreen Editor is a desktop application that composites user-supplied video footage using chroma-key ("green screen") layering, and can optionally publish the resulting videos to TikTok using TikTok's official Content Posting API.</p>
+      </li>
+      <li>
+        <h2>Who this is for</h2>
+        <p>This application is intended for use by a single individual, on their own computer, to manage their own video content. It is not a hosted service — no account is created with the developer, and the application does not run on any server operated by the developer.</p>
+      </li>
+      <li>
+        <h2>Your content, your responsibility</h2>
+        <p>You retain all rights to the video, audio, and text you supply to the application. You are solely responsible for ensuring that anything you create or publish complies with TikTok's own Terms of Service and Community Guidelines, applicable law, and any third-party rights, including music, footage, and likeness.</p>
+      </li>
+      <li>
+        <h2>Connecting a TikTok account</h2>
+        <p>If you choose to connect a TikTok account, the application uses TikTok's official OAuth login flow. Your TikTok username and password are entered only on TikTok's own website — never inside this application. You can revoke the application's access at any time from your TikTok account settings.</p>
+      </li>
+      <li>
+        <h2>No warranty</h2>
+        <p>This application is provided "as is," without warranty of any kind, express or implied. The developer is not responsible for content you publish, any restrictions TikTok places on your account, or loss of local data resulting from your use of the application.</p>
+      </li>
+      <li>
+        <h2>Changes to these terms</h2>
+        <p>These terms may be revised from time to time. The effective date above reflects the most recent revision. Continued use of the application after a change constitutes acceptance of the revised terms.</p>
+      </li>
+      <li>
+        <h2>Contact</h2>
+        <p>Questions about these terms can be sent to <a href="mailto:kyoungminjun@gmail.com">kyoungminjun@gmail.com</a>.</p>
+      </li>
+    </ol>
+  </main>
+
+  <footer>
+    <span>TikTok Greenscreen Editor — personal-use desktop application</span>
+    <span>Last updated 29 July 2026</span>
+  </footer>
+</div>
+</body>
+</html>
