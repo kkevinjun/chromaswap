@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
-<title>TikTok Greenscreen Editor</title>
+<title>ChromaSwap</title>
 <style>
   :root {
     --paper: #f5f5f1;
@@ -18,6 +18,7 @@
     --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
     --font-body: "Iowan Old Style", Georgia, "Times New Roman", serif;
     --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -30,39 +31,129 @@
   body { font-family: var(--font-body); font-size: 17px; line-height: 1.65; }
   a { color: var(--link); }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 64px 24px 80px; }
-  .eyebrow { font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
-  h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 1.6rem + 1.6vw, 2.6rem); letter-spacing: -0.01em; margin: 0 0 20px; text-wrap: balance; }
-  p.lede { color: var(--ink-soft); font-size: 1.08rem; max-width: 56ch; margin: 0 0 32px; }
-  ul.facts { list-style: none; margin: 0 0 40px; padding: 0; display: grid; gap: 14px; }
-  ul.facts li { display: grid; grid-template-columns: 1.4rem 1fr; gap: 10px; color: var(--ink-soft); }
-  ul.facts li::before { content: "—"; color: var(--accent); }
-  nav.links { display: flex; gap: 10px; font-family: var(--font-ui); font-size: 14px; }
-  nav.links a { text-decoration: none; color: var(--ink); padding: 8px 16px; border-radius: 999px; border: 1px solid var(--rule); }
-  nav.links a:hover { border-color: var(--accent); color: var(--accent); }
-  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 13px; color: var(--ink-faint); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+  header.masthead {
+    padding: 28px 0 14px; margin-bottom: 8px; border-bottom: 1px solid var(--rule);
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 20px;
+  }
+  .eyebrow { font-family: var(--font-ui); font-size: 12.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); }
+  nav.switch { display: flex; gap: 4px; font-family: var(--font-ui); font-size: 13.5px; }
+  nav.switch a { text-decoration: none; color: var(--ink-soft); padding: 5px 12px; border-radius: 999px; border: 1px solid var(--rule); }
+  nav.switch a[aria-current="page"] { color: var(--ink); border-color: var(--accent); background: var(--accent-soft); }
+  nav.switch a:hover { color: var(--ink); border-color: var(--ink-faint); }
+
+  .hero { padding-top: 56px; }
+  .hero .eyebrow { color: var(--accent); margin: 0 0 10px; }
+  h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.1rem, 1.6rem + 2vw, 3rem); letter-spacing: -0.01em; margin: 0 0 18px; text-wrap: balance; }
+  p.lede { color: var(--ink-soft); font-size: 1.1rem; max-width: 58ch; margin: 0 0 8px; }
+
+  section { padding-top: 56px; }
+  h2.section-title { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; margin: 0 0 22px; }
+
+  ul.features { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  ul.features li { display: grid; grid-template-columns: 1.5rem 1fr; gap: 10px; color: var(--ink-soft); }
+  ul.features li::before { content: "—"; color: var(--accent); }
+  ul.features strong { color: var(--ink); font-weight: 600; }
+
+  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 0; }
+  ol.steps > li { counter-increment: step; display: grid; grid-template-columns: 2.4rem 1fr; gap: 4px 14px; padding: 18px 0; border-top: 1px solid var(--rule); }
+  ol.steps > li:first-child { border-top: none; padding-top: 0; }
+  ol.steps > li::before {
+    content: counter(step);
+    font-family: var(--font-display); font-variant-numeric: tabular-nums;
+    width: 2rem; height: 2rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  }
+  ol.steps h3 { grid-column: 2; font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; margin: 4px 0 6px; }
+  ol.steps p { grid-column: 2; margin: 0; color: var(--ink-soft); max-width: 58ch; }
+
+  .privacy-note {
+    margin-top: 56px; padding: 20px 22px; border: 1px solid var(--rule); border-radius: 10px;
+    background: var(--accent-soft);
+  }
+  .privacy-note p { margin: 0; color: var(--ink-soft); }
+  .privacy-note strong { color: var(--ink); }
+
+  .cta-row { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+  .cta-row a.btn {
+    text-decoration: none; font-family: var(--font-ui); font-size: 14px; font-weight: 600;
+    padding: 10px 20px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink);
+  }
+  .cta-row a.btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 13px; color: var(--ink-faint); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
+  footer a { color: var(--ink-soft); }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <p class="eyebrow">Personal desktop application</p>
-  <h1>TikTok Greenscreen Editor</h1>
-  <p class="lede">
-    A Windows application that composites video footage using chroma-key
-    ("green screen") layering, and can optionally publish finished videos
-    to TikTok using TikTok's official Content Posting API.
-  </p>
-  <ul class="facts">
-    <li>Runs entirely on your own computer — video is processed locally, not on any server.</li>
-    <li>Connects to TikTok only via TikTok's own login page; your TikTok password is never entered into the app.</li>
-    <li>Built for single-user, personal use — not a hosted or multi-tenant service.</li>
-  </ul>
-  <nav class="links">
-    <a href="terms.html">Terms of Service</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </nav>
+  <header class="masthead">
+    <span class="eyebrow">ChromaSwap</span>
+    <nav class="switch">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <p class="eyebrow">Personal desktop application for Windows</p>
+    <h1>Swap your video's background without a green-screen studio.</h1>
+    <p class="lede">
+      ChromaSwap is a desktop app that takes a video recorded on a plain
+      green background and layers new footage in behind it — no studio,
+      no professional lighting rig, just two video files and a few
+      settings.
+    </p>
+  </div>
+
+  <section>
+    <h2 class="section-title">What it does</h2>
+    <ul class="features">
+      <li><strong>Chroma-key compositing.</strong> Removes a green (or any chosen color) background from your video and replaces it with separate background footage, entirely on your own computer.</li>
+      <li><strong>Automatic length matching.</strong> The combined video is trimmed to match your foreground clip's length, and the background footage is cut to the exact portion used.</li>
+      <li><strong>Batch generation.</strong> Make several output videos in one run, reusing your foreground clip against fresh, non-overlapping stretches of background footage each time.</li>
+      <li><strong>Flexible framing.</strong> Choose whether background footage is cropped to fill the frame, stretched to fit exactly, or cropped to a centered square with letterboxing.</li>
+      <li><strong>Optional TikTok publishing.</strong> Once a video is ready, you can log in with your own TikTok account and publish it directly, using TikTok's official Content Posting API — your TikTok password is never entered into the app.</li>
+      <li><strong>Runs locally.</strong> No account, no server, no analytics. Your video files never leave your computer unless you explicitly choose to publish one.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-title">How it works</h2>
+    <ol class="steps">
+      <li>
+        <h3>Record your foreground clip on a plain background</h3>
+        <p>A green background works best. This clip carries your subject, any on-screen text, and the audio track that will be kept in the final video.</p>
+      </li>
+      <li>
+        <h3>Add background footage</h3>
+        <p>Any video works — this is what will show through once the green is removed. Its own audio is discarded; only the foreground clip's audio is kept.</p>
+      </li>
+      <li>
+        <h3>Adjust the key settings if needed</h3>
+        <p>Fine-tune the background color, key sensitivity, and edge blending so the cutout looks clean, then choose how the background footage should fill the frame.</p>
+      </li>
+      <li>
+        <h3>Generate — and optionally publish</h3>
+        <p>ChromaSwap composites the video locally and saves it to a folder you choose. If you've connected a TikTok account, you can publish it straight from the app.</p>
+      </li>
+    </ol>
+  </section>
+
+  <div class="privacy-note">
+    <p><strong>Privacy by construction:</strong> ChromaSwap has no server component. Every video is processed on your own machine, and the only outside connection it ever makes is to TikTok's official API, and only when you explicitly choose to log in or publish. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="btn" href="terms.html">Read the Terms of Service</a>
+    <a class="btn" href="privacy.html">Read the Privacy Policy</a>
+  </div>
+
   <footer>
-    Questions: <a href="mailto:kyoungminjun@gmail.com">kyoungminjun@gmail.com</a>
+    <span>ChromaSwap — personal-use desktop application</span>
+    <span>Questions: <a href="mailto:kyoungminjun@gmail.com">kyoungminjun@gmail.com</a></span>
   </footer>
 </div>
 </body>

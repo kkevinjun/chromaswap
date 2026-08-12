@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
-<title>Terms of Service — TikTok Greenscreen Editor</title>
+<title>Terms of Service — ChromaSwap</title>
 <style>
   :root {
     --paper: #f5f5f1;
@@ -50,6 +50,9 @@
   ol.clauses > li::before { content: counter(clause) "."; font-family: var(--font-display); font-variant-numeric: tabular-nums; font-size: 1.05rem; color: var(--accent); padding-top: 0.05em; }
   ol.clauses h2 { grid-column: 2; font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; margin: 0 0 6px; }
   ol.clauses p { grid-column: 2; margin: 0; color: var(--ink-soft); max-width: 62ch; }
+  ol.clauses p + p { margin-top: 10px; }
+  ol.clauses ul { grid-column: 2; margin: 8px 0 0; padding-left: 20px; color: var(--ink-soft); }
+  ol.clauses li li { display: list-item; padding: 2px 0; border: none; }
   footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 13px; color: var(--ink-faint); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
   footer a { color: var(--ink-soft); }
   @media (max-width: 520px) { ol.clauses > li { grid-template-columns: 1.6rem 1fr; } }
@@ -58,8 +61,9 @@
 <body>
 <div class="wrap">
   <header class="masthead">
-    <span class="eyebrow">TikTok Greenscreen Editor</span>
+    <span class="eyebrow">ChromaSwap</span>
     <nav class="switch">
+      <a href="index.html">Home</a>
       <a href="terms.html" aria-current="page">Terms of Service</a>
       <a href="privacy.html">Privacy Policy</a>
     </nav>
@@ -67,42 +71,80 @@
 
   <main>
     <h1>Terms of Service</h1>
-    <p class="meta">Effective 29 July 2026</p>
+    <p class="meta">Effective 6 August 2026</p>
     <ol class="clauses">
       <li>
-        <h2>About this application</h2>
-        <p>TikTok Greenscreen Editor is a desktop application that composites user-supplied video footage using chroma-key ("green screen") layering, and can optionally publish the resulting videos to TikTok using TikTok's official Content Posting API.</p>
+        <h2>Acceptance of these terms</h2>
+        <p>By downloading, installing, or using ChromaSwap (the "Application"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the Application.</p>
       </li>
       <li>
-        <h2>Who this is for</h2>
-        <p>This application is intended for use by a single individual, on their own computer, to manage their own video content. It is not a hosted service — no account is created with the developer, and the application does not run on any server operated by the developer.</p>
+        <h2>About the Application</h2>
+        <p>ChromaSwap is a Windows desktop application that composites user-supplied video footage using chroma-key ("green screen") layering. As an optional feature, it can publish the resulting videos to TikTok on behalf of the person running the Application, using TikTok's official Content Posting API.</p>
+        <p>The Application is developed and distributed by an individual developer for personal use. It is not a hosted or multi-tenant service, and no account is created with the developer to use it.</p>
       </li>
       <li>
-        <h2>Your content, your responsibility</h2>
-        <p>You retain all rights to the video, audio, and text you supply to the application. You are solely responsible for ensuring that anything you create or publish complies with TikTok's own Terms of Service and Community Guidelines, applicable law, and any third-party rights, including music, footage, and likeness.</p>
+        <h2>Eligibility</h2>
+        <p>You must be old enough to lawfully use software in your jurisdiction to use the Application. If you connect a TikTok account, you must also independently meet TikTok's own minimum age and eligibility requirements — the Application does not verify this on TikTok's behalf.</p>
+      </li>
+      <li>
+        <h2>License to use the Application</h2>
+        <p>Subject to these Terms, the developer grants you a personal, non-exclusive, non-transferable, revocable license to install and use the Application on devices you own or control, for your own personal purposes. You may not resell, sublicense, or redistribute the Application for commercial purposes without the developer's written permission.</p>
+      </li>
+      <li>
+        <h2>Your content and your responsibility</h2>
+        <p>You retain all rights to the video, audio, and text you supply to the Application. You are solely responsible for:</p>
+        <ul>
+          <li>ensuring you have the necessary rights to any footage, music, or likeness used in your videos;</li>
+          <li>ensuring anything you create or publish complies with TikTok's own Terms of Service and Community Guidelines;</li>
+          <li>complying with all applicable laws in your jurisdiction and the jurisdictions of your intended audience.</li>
+        </ul>
+      </li>
+      <li>
+        <h2>Acceptable use</h2>
+        <p>You agree not to use the Application to create or publish content that is illegal, infringing, defamatory, or that violates the rights of any third party, and not to use the Application to circumvent, probe, or abuse TikTok's systems, rate limits, or API terms.</p>
       </li>
       <li>
         <h2>Connecting a TikTok account</h2>
-        <p>If you choose to connect a TikTok account, the application uses TikTok's official OAuth login flow. Your TikTok username and password are entered only on TikTok's own website — never inside this application. You can revoke the application's access at any time from your TikTok account settings.</p>
+        <p>If you choose to connect a TikTok account, the Application uses TikTok's official OAuth login flow. Your TikTok username and password are entered only on TikTok's own website — never inside the Application. You can revoke the Application's access at any time from your TikTok account settings.</p>
+      </li>
+      <li>
+        <h2>Intellectual property</h2>
+        <p>The Application's source code, design, and branding are the property of the developer. These Terms do not transfer any ownership of the Application to you — only the limited license described above.</p>
       </li>
       <li>
         <h2>No warranty</h2>
-        <p>This application is provided "as is," without warranty of any kind, express or implied. The developer is not responsible for content you publish, any restrictions TikTok places on your account, or loss of local data resulting from your use of the application.</p>
+        <p>The Application is provided "as is" and "as available," without warranty of any kind, express or implied, including without limitation warranties of merchantability, fitness for a particular purpose, and non-infringement. The developer does not warrant that the Application will be uninterrupted, error-free, or compatible with every system configuration.</p>
+      </li>
+      <li>
+        <h2>Limitation of liability</h2>
+        <p>To the maximum extent permitted by law, the developer is not liable for any indirect, incidental, special, or consequential damages arising from your use of the Application, including content you publish, restrictions TikTok places on your account, or loss of local data. The Application is provided free of charge; the developer's total liability arising from these Terms or your use of the Application will not exceed the amount you paid for it (zero).</p>
+      </li>
+      <li>
+        <h2>Indemnification</h2>
+        <p>You agree to indemnify and hold the developer harmless from any claims, damages, or expenses arising from your use of the Application, your content, or your violation of these Terms.</p>
+      </li>
+      <li>
+        <h2>Third-party services</h2>
+        <p>The Application interacts with TikTok's platform, which is governed by TikTok's own terms and policies. The developer does not control and is not responsible for TikTok's actions, including account restrictions, content removal, or service availability.</p>
+      </li>
+      <li>
+        <h2>Termination</h2>
+        <p>You may stop using the Application at any time by uninstalling it. The developer may discontinue or modify the Application at any time. Sections of these Terms that by their nature should survive termination (including intellectual property, no warranty, limitation of liability, and indemnification) will survive.</p>
       </li>
       <li>
         <h2>Changes to these terms</h2>
-        <p>These terms may be revised from time to time. The effective date above reflects the most recent revision. Continued use of the application after a change constitutes acceptance of the revised terms.</p>
+        <p>These Terms may be revised from time to time. The effective date above reflects the most recent revision. Continued use of the Application after a change constitutes acceptance of the revised Terms.</p>
       </li>
       <li>
         <h2>Contact</h2>
-        <p>Questions about these terms can be sent to <a href="mailto:kyoungminjun@gmail.com">kyoungminjun@gmail.com</a>.</p>
+        <p>Questions about these Terms can be sent to <a href="mailto:kyoungminjun@gmail.com">kyoungminjun@gmail.com</a>.</p>
       </li>
     </ol>
   </main>
 
   <footer>
-    <span>TikTok Greenscreen Editor — personal-use desktop application</span>
-    <span>Last updated 29 July 2026</span>
+    <span>ChromaSwap — personal-use desktop application</span>
+    <span>Last updated 6 August 2026</span>
   </footer>
 </div>
 </body>
